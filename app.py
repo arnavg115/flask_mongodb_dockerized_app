@@ -22,6 +22,7 @@ def get_stored_animals():
     db=""
     try:
         db = get_db()
+        db.insert_one({"dino":"bruda"})
         _animals = db.animal_tb.find()
         animals = [{"id": animal["id"], "name": animal["name"], "type": animal["type"]} for animal in _animals]
         return jsonify({"animals": animals})
